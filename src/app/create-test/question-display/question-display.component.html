@@ -1,0 +1,89 @@
+<div class="container" (click)="onContainerClick()">
+    <div id="display" *ngIf="!editMode">
+        <div>
+            <h4>QUESTION {{qIndex + 1}}</h4>
+            <p>{{question.questionTxt}}</p>
+    
+            <div *ngFor="let option of question.options" class="options">
+                <mat-icon>
+                    radio_button_unchecked
+                </mat-icon>
+                <span>{{option.option}}</span>
+            </div>
+        </div>
+        <div id="edit-message">
+            Click to edit this question
+        </div>
+    </div>
+    <div *ngIf="editMode">
+        <app-question-editor
+            [question]="question" 
+            [qIndex]="qIndex">
+        </app-question-editor>
+        <hr>
+        <div *ngIf="editMode && editExplanation">
+            <mat-form-field appearance="fill" class="explanation-area">  
+                <mat-label>Explanation</mat-label>
+                <textarea matInput cdkTextareaAutosize rows="4" [(ngModel)]="question.explanation"></textarea>
+            </mat-form-field>
+            <mat-form-field class="tag-list" appearance="fill" class="question-tags-input">
+                <mat-label>Tag</mat-label>
+                <mat-chip-list #chipList aria-label="Question tag selection">
+                  <mat-chip *ngFor="let tag of question.tags" (removed)="remove(tag)">
+                    {{tag}}
+                    <button matChipRemove>
+                      <mat-icon>cancel</mat-icon>
+                    </button>
+                  </mat-chip>
+                  <input placeholder="New tag..."
+                         [matChipInputFor]="chipList"
+                         [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                         [matChipInputAddOnBlur]="addOnBlur"
+                         (matChipInputTokenEnd)="add($event)">
+                </mat-chip-list>
+              </mat-form-field>
+        </div>  
+        <div class="footer">
+            <div id="footer-actions">
+                <button mat-icon-button aria-label="duplicate" matTooltip="Duplicate">
+                    <mat-icon (click)="onDuplicateQuestion(qIndex)">
+                        content_copy
+                    </mat-icon>
+                </button>
+                <button mat-icon-button aria-label="delete" matTooltip="Delete">
+                    <mat-icon (click)="onDeleteQuestion(qIndex)">
+                        delete
+                    </mat-icon>
+                </button>
+                <button mat-icon-button [matMenuTriggerFor]="question_menu" aria-label="More">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #question_menu="matMenu">
+                    <button mat-menu-item (click)="toggleExplanation()">
+                      <span>{{explanationMenuTxt}}</span>
+                    </button>
+                </mat-menu>   
+            </div>
+            <div id="correct-answer-container" *ngIf="question.options.length > 0">
+                <mat-form-field appearance="fill">
+                    <mat-label>Choose correct options</mat-label>
+                    <mat-select [(ngModel)]="question.correctOptions" multiple>
+                        <mat-select-trigger>
+                        {{question.correctOptions?.length}}
+                        <span *ngIf="question.correctOptions.length > 1" class="example-additional-selection">
+                            options
+                        </span>
+                        <span *ngIf="question.correctOptions.length == 1" class="example-additional-selection">
+                            option
+                        </span>
+                        selected
+                        </mat-select-trigger>
+                        <mat-option *ngFor="let option of question.options;" [value]="option.option">
+                            {{option.option}}
+                        </mat-option>
+                    </mat-select> 
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+.container {
+    padding: 12px;
+    margin: 12px;
+}
+
+#display {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 12px;
+}
+
+.options {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.footer {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+} 
+
+.footer-actions {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+#edit-message {
+    font-size: smaller;
+    text-align: center;
+    opacity: 0;
+    transition: opacity .3s;
+}
+
+.container:hover #edit-message {
+    opacity: 1;
+}
+
+
+/* Explanation and tags */
+.explanation-area {
+    width: 100%;
+}
+
+.question-tags-input {
+    width: 100%;
+}

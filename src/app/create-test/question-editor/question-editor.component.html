@@ -1,0 +1,42 @@
+<div class="mcq">
+    <div class="question">
+        <mat-form-field style="width: 100%;" appearance="fill">
+            <mat-label>Question {{qIndex + 1}}</mat-label>
+            <textarea matInput 
+                cdkTextareaAutosize 
+                placeholder="{{question.questionTxt}}" 
+                value="{{question.questionTxt}}"
+                [(ngModel)]="question.questionTxt">
+            </textarea>
+        </mat-form-field>
+    </div>
+    <div class="options">
+        <div *ngFor="let option of question.options; let index = index; trackBy: optionsTrackFn">
+            <div class="option">
+                <mat-icon>
+                    radio_button_unchecked
+                </mat-icon>
+                <mat-form-field style="width:100%">
+                    <mat-label>Option {{index + 1}}</mat-label>
+                    <input matInput placeholder="new option" 
+                        value="" 
+                        autocomplete="off" 
+                        [(ngModel)]="question.options[index].option"/>
+                  </mat-form-field>
+                <button mat-icon-button aria-label="remove option" matTooltip="Remove">
+                    <mat-icon (click)="removeOption(index)">
+                        clear
+                    </mat-icon>
+                </button>
+            </div>
+        </div>
+
+
+        <button mat-button (click)="onClickAddOption(qIndex)">
+            <mat-icon>
+                add
+            </mat-icon>
+            <span>Add Option</span>
+        </button>
+    </div>
+</div>

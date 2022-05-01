@@ -1,0 +1,46 @@
+.main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px 0;
+}
+
+h1 {
+    color: var(--text-dark);
+    font-weight: bold;
+    font-size: 48px;
+}
+
+.subheading {
+    font-weight: 200;
+    font-size: 24px;
+    padding: 16px 0;
+}
+
+.container {
+    padding: 24px 0;
+}
+
+.action-card {
+    display: inline-block;
+    max-width: 200px;
+    padding: 0 14px;
+    border: 1px solid #e2e2e2;
+    background: #fdfdfd;
+    align-items: center;
+    text-align: center;
+    color: var(--text);
+}
+
+.action-card img {
+    width: 80%;
+    padding: 14px;
+    transition: all .3s;
+}
+
+.action-card:hover {
+    cursor: pointer;
+}
+
+.action-card img:hover {
+    transform: scale(1.05);
+}
