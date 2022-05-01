@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "eep-admin": {
+      "hosting": {
+        "eep-admin": [
+          "eep-admin"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "eep-admin"
+  }
+}

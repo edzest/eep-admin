@@ -101,6 +101,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "eep-admin:build:production",
+            "firebaseProject": "eep-admin",
+            "firebaseHostingSite": "eep-admin"
+          }
         }
       }
     }
