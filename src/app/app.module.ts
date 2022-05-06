@@ -6,8 +6,10 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatTabsModule } from '@angular/material/tabs';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { BrowserModule } from '@angular/platform-browser';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { CreateTestComponent } from './create-test/create-test.component';
@@ -16,7 +18,6 @@ import { QuestionEditorComponent } from './create-test/question-editor/question-
 
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
@@ -40,9 +41,11 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
     MatIconModule,
     MatInputModule,
     MatMenuModule,
+    MatTabsModule,
     MatChipsModule,
     MatTooltipModule,
     MatSelectModule,
+    MatSlideToggleModule,
     FormsModule,
     ReactiveFormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),

@@ -1,27 +1,11 @@
-<div class="container" (click)="onContainerClick()">
-    <div id="display" *ngIf="!editMode">
-        <div>
-            <h4>QUESTION {{qIndex + 1}}</h4>
-            <p>{{question.questionTxt}}</p>
-    
-            <div *ngFor="let option of question.options" class="options">
-                <mat-icon>
-                    radio_button_unchecked
-                </mat-icon>
-                <span>{{option.option}}</span>
-            </div>
-        </div>
-        <div id="edit-message">
-            Click to edit this question
-        </div>
-    </div>
-    <div *ngIf="editMode">
+<div class="container">
+    <div>
         <app-question-editor
             [question]="question" 
             [qIndex]="qIndex">
         </app-question-editor>
         <hr>
-        <div *ngIf="editMode && editExplanation">
+        <div *ngIf="editExplanation">
             <mat-form-field appearance="fill" class="explanation-area">  
                 <mat-label>Explanation</mat-label>
                 <textarea matInput cdkTextareaAutosize rows="4" [(ngModel)]="question.explanation"></textarea>

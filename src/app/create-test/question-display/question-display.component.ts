@@ -23,7 +23,7 @@ export class QuestionDisplayComponent implements OnInit, OnChanges {
   @Output() containerClicked: EventEmitter<number> = new EventEmitter();
 
 
-  editMode: boolean = false;
+  // editMode: boolean = false;
   editExplanation: boolean = false;
   addExplanation: string = "Add explanation";
   hideExplanation: string = "Hide explanation";
@@ -46,7 +46,6 @@ export class QuestionDisplayComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     console.log(`changed values`);
     console.log(changes);
-    this.editMode = this.currentlyEditingQIdx == this.qIndex;
   }
 
   onDuplicateQuestion(qIndex: number) {
@@ -57,14 +56,14 @@ export class QuestionDisplayComponent implements OnInit, OnChanges {
     this.deleteQuestion.emit(qIndex);
   }
 
-  onContainerClick() {
-    console.log('Emitting container clicked');
-    if (!this.editMode) {
-      console.log('Emitting qIndex');
-      this.editMode = true;
-      this.containerClicked.emit(this.qIndex);
-    }
-  }
+  // onContainerClick() {
+  //   console.log('Emitting container clicked');
+  //   if (!this.editMode) {
+  //     console.log('Emitting qIndex');
+  //     this.editMode = true;
+  //     this.containerClicked.emit(this.qIndex);
+  //   }
+  // }
 
 
   addOnBlur = true;

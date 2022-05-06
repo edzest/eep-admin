@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Question } from 'src/app/shared/models/question';
 import { Section } from 'src/app/shared/models/section';
 import { Test } from 'src/app/shared/models/test';
@@ -33,19 +34,10 @@ export class CreateTestComponent implements OnInit {
     ]
   }
 
-  // allQuestions: McqQuestion[] = [
-  //   {
-  //     'question': 'Ex: What is the capital of India...',
-  //     'options': [{
-  //       id: 0,
-  //       option: 'New Delhi'
-  //     }],
-  //     correctOptions: ['New Delhi']
-  //   }
-  // ];
-
   currentQIdx: number | undefined | null;
   currentSectionIdx: number = 0;
+  isTimeBased: boolean = false;
+  selectedSection = new FormControl(0);
 
   constructor() { }
 
@@ -156,13 +148,14 @@ export class CreateTestComponent implements OnInit {
     }
     this.test.sections.push(newSection);
     this.currentSectionIdx = this.test.sections.length - 1;
+    this.selectedSection.setValue(this.test.sections.length - 1);
   }
 
   deleteSection(index: number) {
     this.test.sections.splice(index, 1);
-    if (index < this.currentSectionIdx) {
-      this.currentSectionIdx--;
-    }
+    // if (index < this.currentSectionIdx) {
+    //   this.currentSectionIdx--;
+    // }
   }
 
   onSectionClick(sectionIndex: number) {
