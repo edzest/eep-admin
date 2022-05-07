@@ -1,5 +1,5 @@
 <div class="container">
-    <button mat-button><mat-icon class="small-icon">arrow_back</mat-icon> Back to tests</button>
+    <button mat-button (click)="goToHomePage()"><mat-icon class="small-icon">arrow_back</mat-icon> Back to tests</button>
     <div class="create-test-container">
         <div class="main">
             <div class="header">
@@ -71,7 +71,9 @@
                         <div class="settings-content-row" *ngFor="let section of test.sections; let index = index">
                             <div class="section">
                                 <mat-icon class="drag-icon">drag_indicator</mat-icon>
-                                <span class="section-title">{{section.sectionName}}</span>
+                                <span class="section-title">
+                                    {{section.sectionName}} <span class="hint-text">( {{section.questions.length}} questions )</span>
+                                </span>
                                 <mat-icon *ngIf="test.sections.length > 1" (click)="deleteSection(index)" class="small-icon">close</mat-icon>
                             </div>
                         </div>
@@ -84,7 +86,11 @@
                     </div>
                     <div class="settings-content" *ngIf="isTimeBased">
                         <div class="settings-content-row">
-                            <h3>Total Duration (in mins)</h3>
+                            <h3>Total Duration <span class="hint-text">( in mins )</span></h3>
+                            <input type="number" min=1>
+                        </div>
+                        <div class="settings-content-row">
+                            <h3>Break between sessions <span class="hint-text">( in mins )</span></h3>
                             <input type="number" min=1>
                         </div>
                     </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Question } from 'src/app/shared/models/question';
 import { Section } from 'src/app/shared/models/section';
 import { Test } from 'src/app/shared/models/test';
@@ -20,14 +21,14 @@ export class CreateTestComponent implements OnInit {
         sectionName: "Section 1",
         questions: [
           {
-            questionTxt: "Ex: What is the capital of India...",
+            questionTxt: "",
             options: [
               {
                 id: 0,
-                option: 'New Delhi'
+                option: ''
               }
             ],
-            correctOptions: ['New Delhi']
+            correctOptions: ['']
           }
         ]
       }
@@ -39,7 +40,7 @@ export class CreateTestComponent implements OnInit {
   isTimeBased: boolean = false;
   selectedSection = new FormControl(0);
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     if (this.test.sections.length == 1 && this.test.sections[0].questions.length == 1) {
@@ -165,5 +166,9 @@ export class CreateTestComponent implements OnInit {
 
   saveTest() {
     console.log(this.test);
+  }
+
+  goToHomePage() {
+    this.router.navigate(['/home']);
   }
 }
