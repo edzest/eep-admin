@@ -1,86 +1,92 @@
-<div class="create-test-container">
-    <div class="main">
-        <div class="header">
-            <div class="title">
-                <h1>{{test.title}}</h1>
-            </div>
-            <div class="actions">
-                <div class="upload">
-                    <input id="test-file-upload" type="file" class="upload" (change)="onFileUpload($event)">
-                    <label for="test-file-upload" matTooltip="Upload CSV">
-                        <button mat-icon-button aria-label="upload-test" type="button"> 
-                            <mat-icon>upload</mat-icon>
-                        </button>
-                    </label>
-                </div>
-                <button mat-button color="primary" (click)="saveTest()">Save</button>
-                <button mat-stroked-button color="primary">Publish</button>
-            </div>
-        </div>
-
-        <mat-tab-group [selectedIndex]="selectedSection.value"
-                    (selectedIndexChange)="selectedSection.setValue($event)">
-            <mat-tab *ngFor="let section of test.sections; let index = index" [label]="section.sectionName">
-                <div class="exam-builder">
-
-                    <div *ngIf="section.questions.length == 0" class="info-message">
-                        <img src="../../../assets/images/chimp.png" alt="chimp thinking" class="round-medium-image">
-                        <p>Headmaster Chimp doesn't like a section with no question. </p>
-                        <p>Click <span class="action-text" (click)="addNewQuestion()">here</span> to create one.</p>
-                    </div>
+<div class="container">
+    <button mat-button><mat-icon class="small-icon">arrow_back</mat-icon> Back to tests</button>
+    <div class="create-test-container">
+        <div class="main">
+            <div class="header">
+                <div class="title">
                     <div>
-                        <div *ngFor="let question of section.questions;let qIndex = index;">
-                            <app-question-display 
-                                [question]="question" 
-                                [qIndex]="qIndex"
-                                [currentlyEditingQIdx]="currentQIdx"
-                                (deleteQuestion)="deleteQuestion($event)"
-                                (duplicateQuestion)="duplicateQuestion($event)"
-                                (containerClicked)="onQuestionContainerClick($event)">
-                            </app-question-display>
-                
-                        </div>
-                    </div>
-                    <div class="new-question">
-                        <!-- <p>Add new question</p> -->
+                        <!-- <h2>Test</h2> -->
                     </div>
                 </div>
-            </mat-tab>
-        </mat-tab-group>
-    </div>
-
-    <div class="sidebar">
-        <h2>Test Settings</h2>
-        <div>
+                <div class="actions">
+                    <div class="upload">
+                        <input id="test-file-upload" type="file" class="upload" (change)="onFileUpload($event)">
+                        <label for="test-file-upload" matTooltip="Upload CSV">
+                            <button mat-icon-button aria-label="upload-test" type="button"> 
+                                <mat-icon>upload</mat-icon>
+                            </button>
+                        </label>
+                    </div>
+                    <button mat-button color="primary" (click)="saveTest()">Save</button>
+                    <button mat-stroked-button color="primary">Publish</button>
+                </div>
+            </div>
+    
+            <mat-tab-group [selectedIndex]="selectedSection.value"
+                        (selectedIndexChange)="selectedSection.setValue($event)">
+                <mat-tab *ngFor="let section of test.sections; let index = index" [label]="section.sectionName">
+                    <div class="exam-builder">
+    
+                        <div *ngIf="section.questions.length == 0" class="info-message">
+                            <img src="../../../assets/images/chimp.png" alt="chimp thinking" class="round-medium-image">
+                            <p>Headmaster Chimp doesn't like a section with no question. </p>
+                            <p>Click <span class="action-text" (click)="addNewQuestion()">here</span> to create one.</p>
+                        </div>
+                        <div>
+                            <div *ngFor="let question of section.questions;let qIndex = index;">
+                                <app-question-display 
+                                    [question]="question" 
+                                    [qIndex]="qIndex"
+                                    [currentlyEditingQIdx]="currentQIdx"
+                                    (deleteQuestion)="deleteQuestion($event)"
+                                    (duplicateQuestion)="duplicateQuestion($event)"
+                                    (containerClicked)="onQuestionContainerClick($event)">
+                                </app-question-display>
+                    
+                            </div>
+                        </div>
+                        <div class="new-question">
+                            <button mat-button color="primary" (click)="addNewQuestion()">Add new question</button>
+                        </div>
+                    </div>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    
+        <div class="sidebar">
+            <h2>Test Settings</h2>
             <div>
-                <h3>Name of the test</h3>
-                <input type="text" class="full-width">
-            </div>
-            <br>
-            <div class="settings-row">
-                <div class="settings-header">
-                    <h3>Sections</h3>
-                    <button mat-button color="primary" (click)="addNewSection()">Add new section</button>
+                <div>
+                    <h3>Name of the test</h3>
+                    <input type="text" class="full-width" [(ngModel)]="test.title">
                 </div>
-                <div class="settings-content">
-                    <div class="settings-content-row" *ngFor="let section of test.sections; let index = index">
-                        <div class="section">
-                            <mat-icon class="drag-icon">drag_indicator</mat-icon>
-                            <span class="section-title">{{section.sectionName}}</span>
-                            <mat-icon *ngIf="test.sections.length > 1" (click)="deleteSection(index)" class="small-icon">close</mat-icon>
+                <br>
+                
+                <div class="settings-row">
+                    <div class="settings-header">
+                        <h3>Sections</h3>
+                        <button mat-button color="primary" (click)="addNewSection()">Add new section</button>
+                    </div>
+                    <div class="settings-content">
+                        <div class="settings-content-row" *ngFor="let section of test.sections; let index = index">
+                            <div class="section">
+                                <mat-icon class="drag-icon">drag_indicator</mat-icon>
+                                <span class="section-title">{{section.sectionName}}</span>
+                                <mat-icon *ngIf="test.sections.length > 1" (click)="deleteSection(index)" class="small-icon">close</mat-icon>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="settings-row">
-                <div class="settings-header">
-                    <h3>Time based</h3>
-                    <mat-slide-toggle [(ngModel)]="isTimeBased"></mat-slide-toggle>
-                </div>
-                <div class="settings-content" *ngIf="isTimeBased">
-                    <div class="settings-content-row">
-                        <h3>Total Duration (in mins)</h3>
-                        <input type="number" min=1>
+                <div class="settings-row">
+                    <div class="settings-header">
+                        <h3>Time based</h3>
+                        <mat-slide-toggle [(ngModel)]="isTimeBased"></mat-slide-toggle>
+                    </div>
+                    <div class="settings-content" *ngIf="isTimeBased">
+                        <div class="settings-content-row">
+                            <h3>Total Duration (in mins)</h3>
+                            <input type="number" min=1>
+                        </div>
                     </div>
                 </div>
             </div>

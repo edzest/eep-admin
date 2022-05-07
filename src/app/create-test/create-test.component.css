@@ -1,22 +1,30 @@
-.create-test-container {
-    margin: 0 32px;
+.container {
+    margin: 0 auto;
     max-width: 1600px;
-    display: flex;
-    gap: 12px;
     padding: 24px;
+}
+
+.create-test-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 20px; 
+   
 }
 .main {
     /* max-width: 850px; */
     /* margin: 0 auto; */
+    display: inline-block;
     padding: 24px 0;
-    width: 70%;
+    /* width: 60%; */
 }
 
 .sidebar {
     padding: 24px;
     background: rgba(0,0,0,.04);;
-    min-height: 400px;
-    width: 30%;
+    position: sticky;
+    top: 0;
+    height: 80vh;
+    display: inline-block;
 }
 
 .sidebar input {
@@ -80,6 +88,14 @@
     border-bottom: 1px solid;
     border-color: var(--line);
     padding: 12px 24px;
+}
+
+:host ::ng-deep .mat-tab-header {
+    top: 0;
+    z-index: 1000; 
+    position: sticky;
+    position: -webkit-sticky; /* macOS/iOS Safari */    
+    background-color: white;
 }
 
 .header .actions {
@@ -168,11 +184,6 @@
     padding: 4px;
 }
 
-.small-icon:hover {
-    background: #d1d1d1;
-    cursor: initial;
-}
-
 .drag-icon {
     font-size: 18px;
     height: 18px;
@@ -227,4 +238,9 @@
 .white-bg {
     background-color: white;
     border-radius: var(--radius);
+}
+
+.new-question {
+    text-align: center;
+    margin-top: 24px;
 }

@@ -80,14 +80,14 @@ export class CreateTestComponent implements OnInit {
       this.addNewSection();
     } else {
       const question: Question = {
-        questionTxt: 'What is the capital of India?',
+        questionTxt: '',
         options: [
           {
             id: 0,
-            option: 'New Delhi'
+            option: ''
           },
         ],
-        correctOptions: ['New Delhi']
+        correctOptions: ['']
       };
       this.test.sections[this.currentSectionIdx].questions.push(question);
       this.currentQIdx = 0;
