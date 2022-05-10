@@ -168,7 +168,7 @@ export class CreateTestComponent implements OnInit {
     console.log(this.test);
   }
 
-  goToHomePage() {
-    this.router.navigate(['/home']);
+  goToDashboard() {
+    this.router.navigate(['/admin']);
   }
 }

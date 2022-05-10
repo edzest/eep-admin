@@ -24,6 +24,8 @@ import { AppComponent } from './app.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
+import { LandingPageComponent } from './landing-page/landing-page.component';
+import { LandingNavbarComponent } from './landing-navbar/landing-navbar.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
     AdminDashboardComponent,
     CreateTestComponent,
     QuestionEditorComponent,
-    QuestionDisplayComponent
+    QuestionDisplayComponent,
+    LandingPageComponent,
+    LandingNavbarComponent
   ],
   imports: [
     BrowserModule,

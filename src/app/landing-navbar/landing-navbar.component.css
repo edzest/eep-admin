@@ -1,0 +1,16 @@
+.navbar {
+    background: white;
+    top: 0;
+    position: sticky;
+}
+
+.container {
+    display: flex;
+    padding: 12px;
+    margin: 0 auto;
+    max-width: 2000px;
+}
+
+.logo {
+
+}
