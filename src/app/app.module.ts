@@ -10,6 +10,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTabGroup } from '@angular/material/tabs';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { BrowserModule } from '@angular/platform-browser';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
@@ -26,6 +27,7 @@ import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { LandingNavbarComponent } from './landing-navbar/landing-navbar.component';
+import { CreateTestOpenDialogComponent } from './create-test/create-test-open-dialog/create-test-open-dialog.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { LandingNavbarComponent } from './landing-navbar/landing-navbar.componen
     QuestionEditorComponent,
     QuestionDisplayComponent,
     LandingPageComponent,
-    LandingNavbarComponent
+    LandingNavbarComponent,
+    CreateTestOpenDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -50,6 +53,7 @@ import { LandingNavbarComponent } from './landing-navbar/landing-navbar.componen
     MatChipsModule,
     MatTooltipModule,
     MatSelectModule,
+    MatDialogModule,
     MatSlideToggleModule,
     FormsModule,
     ReactiveFormsModule,

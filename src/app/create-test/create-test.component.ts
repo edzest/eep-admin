@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Question } from 'src/app/shared/models/question';
 import { Section } from 'src/app/shared/models/section';
 import { Test } from 'src/app/shared/models/test';
-import { McqQuestion, Option } from './question-types';
+import * as XLSX from 'xlsx';
+import { ExcelService, ExcelRow } from '../services/excel.service';
+import { CreateTestOpenDialogComponent } from './create-test-open-dialog/create-test-open-dialog.component';
+
 
 @Component({
   selector: 'app-create-test',
@@ -14,25 +18,9 @@ import { McqQuestion, Option } from './question-types';
 export class CreateTestComponent implements OnInit {
 
   test: Test = {
-    testId: "1",
-    title: "Untitled Exam",
-    sections: [
-      {
-        sectionName: "Section 1",
-        questions: [
-          {
-            questionTxt: "",
-            options: [
-              {
-                id: 0,
-                option: ''
-              }
-            ],
-            correctOptions: ['']
-          }
-        ]
-      }
-    ]
+    testId: "",
+    title: "",
+    sections: []
   }
 
   currentQIdx: number | undefined | null;
@@ -40,12 +28,22 @@ export class CreateTestComponent implements OnInit {
   isTimeBased: boolean = false;
   selectedSection = new FormControl(0);
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private excelService: ExcelService, public entryDialog: MatDialog) {
+    
+  }
 
   ngOnInit(): void {
+    if (this.testHasNoSection()) {
+      const dialogRef = this.entryDialog.open(CreateTestOpenDialogComponent);
+      dialogRef.afterClosed().subscribe(result => console.log(result));
+    }
     if (this.test.sections.length == 1 && this.test.sections[0].questions.length == 1) {
       this.currentQIdx = 0;
     }
+  }
+
+  testHasNoSection() {
+    return this.test.sections.length == 0;
   }
 
 
@@ -105,25 +103,32 @@ export class CreateTestComponent implements OnInit {
   onFileUpload($event: any) {
     const files = $event.srcElement.files;
     if (files !== null && files !== undefined && files.length > 0) {
-      // todo: read file and populate allQuestions
-      console.log(files);
       if (files && files.length > 0) {
         let file: File = files.item(0);
-        console.log(file.name);
-        console.log(file.size);
-        console.log(file.type);
-        let reader: FileReader = new FileReader();
-        reader.readAsText(file);
-        reader.onload = (e) => {
-          let csv: string = reader.result as string;
-          this.convertCsvStringToJson(csv);
+        const reader: FileReader = new FileReader();
+        reader.readAsBinaryString(file);
+        reader.onload = (e: any) => {
+          const sheetData: {name: string, data: ExcelRow[]}[] = [];
+          const binarystr: string = e.target.result;
+          const wb: XLSX.WorkBook = XLSX.read(binarystr, { type: 'binary' });
+          
+          const totalSheets = wb.SheetNames.length;
+
+          for (let i = 0; i < totalSheets; i++) {
+            const wsname: string = wb.SheetNames[i];
+            const ws: XLSX.WorkSheet = wb.Sheets[wsname];
+
+            const data = XLSX.utils.sheet_to_json(ws);
+            sheetData.push({
+              name: wsname,
+              data: <ExcelRow[]> data
+            });
+
+            this.test = this.excelService.createTest(sheetData);
+          }
         }
       }
     }
-  }
-
-  convertCsvStringToJson(data: string) {
-    console.log(data);
   }
 
 
