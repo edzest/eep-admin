@@ -1,10 +1,30 @@
 <div class="main">
-    <h1>Welcome Admin</h1>
-    <p class="subheading">Let's get started by creating a new test</p>
+    <div class="toolbar">
+        <div class="logo">
+            <h1>PARIKSHA</h1>
+        </div>
+        <div class="settings">
+            <div class="user-profile">
+                <div class="user-icon">
+                    <img src="../../assets/images/male_avatar.svg" alt="male_avatar" width="50px">
+                </div>
+                <div class="name">
+                    <h2>Amit Kumar Chandan</h2>
+                    <p class="org-name">Edzest</p>
+                </div>
+                
+            </div>
+        </div>
+    </div>
     <div class="container">
-        <div class="action-card" (click)="onClickNewTest()"> 
-            <img src="../../../assets/images/add_file.svg" alt="New test icon">
-            <h3>Create a new test</h3>
+        <div class="draft-tests">
+            <h1 class="large-h1">All Tests</h1>
+            <div class="container">
+                <div class="action-card" (click)="onClickNewTest()"> 
+                    <img src="../../../assets/images/add_file.svg" alt="New test icon">
+                    <h3>Create a new test</h3>
+                </div>
+            </div>
         </div>
     </div>
 </div>

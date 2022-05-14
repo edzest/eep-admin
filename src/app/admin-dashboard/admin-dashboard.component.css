@@ -1,13 +1,47 @@
 .main {
     max-width: 1200px;
     margin: 0 auto;
+}
+
+/** TOOLBAR **/
+
+.toolbar {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
     padding: 24px 0;
 }
 
-h1 {
-    color: var(--text-dark);
+.logo> h1 {
     font-weight: bold;
-    font-size: 48px;
+    display: inline-block;
+    margin-bottom: 0;
+    font-size: 36px;
+    color: var(--dark);
+}
+
+.user-profile {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+}
+
+.user-profile .org-name {
+    color: gray;
+}
+
+.user-profile>.name>h2 {
+    margin-bottom: 0;
+}
+
+/** TOOLBAR ENDS **/
+
+.large-h1 {
+    font-weight: bold;
+    font-size: 32px;
 }
 
 .subheading {
