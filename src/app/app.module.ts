@@ -26,8 +26,8 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { LandingPageComponent } from './landing-page/landing-page.component';
-import { LandingNavbarComponent } from './landing-navbar/landing-navbar.component';
 import { CreateTestOpenDialogComponent } from './create-test/create-test-open-dialog/create-test-open-dialog.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -37,8 +37,8 @@ import { CreateTestOpenDialogComponent } from './create-test/create-test-open-di
     QuestionEditorComponent,
     QuestionDisplayComponent,
     LandingPageComponent,
-    LandingNavbarComponent,
-    CreateTestOpenDialogComponent
+    CreateTestOpenDialogComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

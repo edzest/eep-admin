@@ -22,7 +22,7 @@
     padding: 24px;
     background: rgba(0,0,0,.04);;
     position: sticky;
-    top: 0;
+    top: 112px;
     height: 80vh;
     display: inline-block;
 }
@@ -96,7 +96,7 @@
 }
 
 :host ::ng-deep .mat-tab-header {
-    top: 0;
+    top: 112px;
     z-index: 1000; 
     position: sticky;
     position: -webkit-sticky; /* macOS/iOS Safari */    

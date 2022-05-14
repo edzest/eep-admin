@@ -1,0 +1,39 @@
+
+/** TOOLBAR **/
+
+.toolbar {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 24px 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    z-index: 1000;
+}
+
+.logo> h1 {
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 0;
+    font-size: 36px;
+    color: var(--dark);
+}
+
+.user-profile {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+}
+
+.user-profile .org-name {
+    color: gray;
+}
+
+.user-profile>.name>h2 {
+    margin-bottom: 0;
+}
+
+/** TOOLBAR ENDS **/

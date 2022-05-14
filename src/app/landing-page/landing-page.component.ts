@@ -10,6 +10,8 @@ export class LandingPageComponent implements OnInit {
 
   constructor(private router: Router) { }
 
+  loggedIn = true;
+
   ngOnInit(): void {
   }
 
