@@ -1,4 +1,48 @@
+.toolbar {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 24px 0;
+}
+
+.logo> h1 {
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 0;
+    font-size: 36px;
+    color: var(--dark);
+}
+
 .container {
-    max-width: 1600px;
+    max-width: 1200px;
     margin: 0 auto;
+}
+
+.hero {
+    margin: 24px 0;
+    height: 100vh;
+    position: relative;
+}
+
+.hero-content {
+    position: absolute;
+    top: 25%;
+    text-align: center;
+}
+
+.hero-content>button {
+    margin: 32px;
+}
+
+.hero-content h1 {
+    font-size: 52px;
+    line-height: 60px;
+    font-weight: bold;
+}
+
+.highlight {
+    border-bottom: 8px solid #6C63FF;
 }
