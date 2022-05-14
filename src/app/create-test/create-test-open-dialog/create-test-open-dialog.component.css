@@ -19,3 +19,13 @@ mat-dialog-content {
     width: 5rem;
     height: 5rem;
 }
+
+.upload>input {
+    display: none;
+}
+.upload>label {
+    cursor: pointer;
+}
+.upload>label>button {
+    pointer-events: none;
+}

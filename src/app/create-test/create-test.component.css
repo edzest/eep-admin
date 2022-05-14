@@ -1,6 +1,6 @@
 .container {
     margin: 0 auto;
-    max-width: 1600px;
+    max-width: 1200px;
     padding: 24px;
 }
 
@@ -127,16 +127,6 @@
 
 .editable-header:focus {
     background: #F5F5F5;
-}
-
-.upload>input {
-    display: none;
-}
-.upload>label {
-    cursor: pointer;
-}
-.upload>label>button {
-    pointer-events: none;
 }
 
 #sections {

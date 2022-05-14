@@ -35,8 +35,9 @@ export class CreateTestComponent implements OnInit {
   ngOnInit(): void {
     if (this.testHasNoSection()) {
       const dialogRef = this.entryDialog.open(CreateTestOpenDialogComponent);
-      dialogRef.afterClosed().subscribe(result => console.log(result));
+      dialogRef.afterClosed().subscribe(result => this.test = result);
     }
+    
     if (this.test.sections.length == 1 && this.test.sections[0].questions.length == 1) {
       this.currentQIdx = 0;
     }

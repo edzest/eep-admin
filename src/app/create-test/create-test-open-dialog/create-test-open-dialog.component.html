@@ -7,7 +7,13 @@
         <mat-icon class="upload-icon">insert_drive_file</mat-icon>
         <p>Drag your question sheet here to start uploading</p>
         <p>OR</p>
-        <button mat-flat-button color="primary">Browse Files</button>
+        <div class="upload">
+          <input id="test-file-upload" type="file" class="upload" (change)="onFileUpload($event)">
+          <label for="test-file-upload">
+            <button mat-flat-button color="primary" type="button">Browse Files</button>
+          </label>
+        </div>
+        
       </div>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
