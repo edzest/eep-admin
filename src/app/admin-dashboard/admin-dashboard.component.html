@@ -17,14 +17,37 @@
         </div>
     </div>
     <div class="container">
-        <div class="draft-tests">
-            <h1 class="large-h1">All Tests</h1>
-            <div class="container">
-                <div class="action-card" (click)="onClickNewTest()"> 
-                    <img src="../../../assets/images/add_file.svg" alt="New test icon">
-                    <h3>Create a new test</h3>
-                </div>
+        <div class="test-table-container">
+            <div class="table-container-header">
+                <h2>All Tests</h2>
+                <button mat-button color="primary" (click)="onClickNewTest()">Create New Test</button>
             </div>
+
+            <table mat-table [dataSource]="testInfoTableDataSource" class="table">
+        
+                <!-- Name Column -->
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef> Name </th>
+                    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                </ng-container>
+
+                <!-- Status Column -->
+                <ng-container matColumnDef="status">
+                    <th mat-header-cell *matHeaderCellDef> Status </th>
+                    <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+                </ng-container>
+
+                <!-- Modified At Column -->
+                <ng-container matColumnDef="modified">
+                    <th mat-header-cell *matHeaderCellDef> Last Modified </th>
+                    <td mat-cell *matCellDef="let element"> {{element.modified}} </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="testInfoColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: testInfoColumns;"></tr>
+
+            </table>
+            
         </div>
     </div>
 </div>

@@ -9,7 +9,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatTabGroup } from '@angular/material/tabs';
+import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { BrowserModule } from '@angular/platform-browser';
@@ -50,6 +50,7 @@ import { CreateTestOpenDialogComponent } from './create-test/create-test-open-di
     MatInputModule,
     MatMenuModule,
     MatTabsModule,
+    MatTableModule,
     MatChipsModule,
     MatTooltipModule,
     MatSelectModule,

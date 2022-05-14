@@ -78,3 +78,19 @@
 .action-card img:hover {
     transform: scale(1.05);
 }
+
+.table {
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.table-container-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.table-container-header h2 {
+    margin-bottom: 0;
+}
