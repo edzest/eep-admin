@@ -1,6 +1,5 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
-import { McqQuestion } from '../question-types';
-import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { Question } from 'src/app/shared/models/question';
 

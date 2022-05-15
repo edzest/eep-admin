@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Question } from 'src/app/shared/models/question';
-import { McqQuestion, Option } from '../question-types';
+import { Option } from '../question-types';
 
 @Component({
   selector: 'app-question-editor',
