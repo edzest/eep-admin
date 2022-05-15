@@ -10,7 +10,7 @@ import { Question } from 'src/app/shared/models/question';
   templateUrl: './question-display.component.html',
   styleUrls: ['./question-display.component.css']
 })
-export class QuestionDisplayComponent implements OnInit, OnChanges {
+export class QuestionDisplayComponent implements OnInit {
 
   constructor() { }
 
@@ -22,7 +22,6 @@ export class QuestionDisplayComponent implements OnInit, OnChanges {
   @Output() duplicateQuestion: EventEmitter<number> = new EventEmitter();
 
 
-  // editMode: boolean = false;
   editExplanation: boolean = false;
   addExplanation: string = "Add explanation";
   hideExplanation: string = "Hide explanation";
@@ -40,11 +39,6 @@ export class QuestionDisplayComponent implements OnInit, OnChanges {
     if (!this.question.tags) {
       this.question.tags = [];
     }
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(`changed values`);
-    console.log(changes);
   }
 
   onDuplicateQuestion(qIndex: number) {

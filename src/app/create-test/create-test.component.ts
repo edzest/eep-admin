@@ -5,8 +5,6 @@ import { Router } from '@angular/router';
 import { Question } from 'src/app/shared/models/question';
 import { Section } from 'src/app/shared/models/section';
 import { Test } from 'src/app/shared/models/test';
-import * as XLSX from 'xlsx';
-import { ExcelService, ExcelRow } from '../services/excel.service';
 import { CreateTestOpenDialogComponent } from './create-test-open-dialog/create-test-open-dialog.component';
 
 
@@ -28,11 +26,12 @@ export class CreateTestComponent implements OnInit {
   isTimeBased: boolean = false;
   selectedSection = new FormControl(0);
 
-  constructor(private router: Router, private excelService: ExcelService, public entryDialog: MatDialog) {
+  constructor(private router: Router, public entryDialog: MatDialog) {
     
   }
 
   ngOnInit(): void {
+    // open "create new test" dialog
     if (this.testHasNoSection()) {
       const dialogRef = this.entryDialog.open(CreateTestOpenDialogComponent);
       dialogRef.afterClosed().subscribe(result => this.test = result);
@@ -96,57 +95,10 @@ export class CreateTestComponent implements OnInit {
   }
 
 
-  onFileUpload($event: any) {
-    const files = $event.srcElement.files;
-    if (files !== null && files !== undefined && files.length > 0) {
-      if (files && files.length > 0) {
-        let file: File = files.item(0);
-        const reader: FileReader = new FileReader();
-        reader.readAsBinaryString(file);
-        reader.onload = (e: any) => {
-          const sheetData: {name: string, data: ExcelRow[]}[] = [];
-          const binarystr: string = e.target.result;
-          const wb: XLSX.WorkBook = XLSX.read(binarystr, { type: 'binary' });
-          
-          const totalSheets = wb.SheetNames.length;
-
-          for (let i = 0; i < totalSheets; i++) {
-            const wsname: string = wb.SheetNames[i];
-            const ws: XLSX.WorkSheet = wb.Sheets[wsname];
-
-            const data = XLSX.utils.sheet_to_json(ws);
-            sheetData.push({
-              name: wsname,
-              data: <ExcelRow[]> data
-            });
-
-            this.test = this.excelService.createTest(sheetData);
-          }
-        }
-      }
-    }
-  }
-
-
   addNewSection() {
     const newSection: Section = {
       sectionName: "New Section",
-      questions: [{
-        questionTxt: "What is the capital of Maharashtra?",
-        options: [
-          {
-            id: 1,
-            option: "Pune"
-          },{
-            id: 2,
-            option: "Mumbai"
-          },{
-            id: 3,
-            option: "Nagpur"
-          }
-        ],
-        correctOptions: ["Mumbai"]
-      }]
+      questions: []
     }
     this.test.sections.push(newSection);
     this.currentSectionIdx = this.test.sections.length - 1;
@@ -155,13 +107,6 @@ export class CreateTestComponent implements OnInit {
 
   deleteSection(index: number) {
     this.test.sections.splice(index, 1);
-    // if (index < this.currentSectionIdx) {
-    //   this.currentSectionIdx--;
-    // }
-  }
-
-  onSectionClick(sectionIndex: number) {
-    this.currentSectionIdx = sectionIndex;
   }
 
 
