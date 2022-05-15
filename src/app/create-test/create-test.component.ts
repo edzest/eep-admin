@@ -96,11 +96,6 @@ export class CreateTestComponent implements OnInit {
   }
 
 
-  onQuestionContainerClick(qIndex: number) {
-    this.currentQIdx = qIndex;
-  }
-
-
   onFileUpload($event: any) {
     const files = $event.srcElement.files;
     if (files !== null && files !== undefined && files.length > 0) {

@@ -20,7 +20,6 @@ export class QuestionDisplayComponent implements OnInit, OnChanges {
 
   @Output() deleteQuestion: EventEmitter<number> = new EventEmitter();
   @Output() duplicateQuestion: EventEmitter<number> = new EventEmitter();
-  @Output() containerClicked: EventEmitter<number> = new EventEmitter();
 
 
   // editMode: boolean = false;
@@ -55,15 +54,6 @@ export class QuestionDisplayComponent implements OnInit, OnChanges {
   onDeleteQuestion(qIndex: number) {
     this.deleteQuestion.emit(qIndex);
   }
-
-  // onContainerClick() {
-  //   console.log('Emitting container clicked');
-  //   if (!this.editMode) {
-  //     console.log('Emitting qIndex');
-  //     this.editMode = true;
-  //     this.containerClicked.emit(this.qIndex);
-  //   }
-  // }
 
 
   addOnBlur = true;
