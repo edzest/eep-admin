@@ -11,11 +11,8 @@
    
 }
 .main {
-    /* max-width: 850px; */
-    /* margin: 0 auto; */
     display: inline-block;
     padding: 24px 0;
-    /* width: 60%; */
 }
 
 .sidebar {
@@ -129,20 +126,6 @@
     background: #F5F5F5;
 }
 
-#sections {
-    padding: 12px 24px;
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    border-bottom: 1px solid var(--line);
-}
-
-.all-sections {
-    display: flex;
-    gap: 12px;
-    overflow-x: auto;
-}
-
 .section-tile {
     background: #f5f5f5;
     padding: 8px;
@@ -153,22 +136,6 @@
     justify-content: space-between;
     min-width: 128px;
     cursor: pointer;
-}
-
-.section-tile:hover {
-    border-bottom: 2px solid var(--text);
-}
-
-.section-tile-w-border {
-    border-bottom: 2px solid var(--text);
-}
-
-.add-section-tile {
-    border: 1px dashed #d1d1d1;
-    padding: 8px;
-    border-radius: var(--radius);
-    cursor: pointer;
-    border-radius: 50%;
 }
 
 .small-icon {
@@ -186,24 +153,6 @@
     border-radius: 50%;
     padding: 4px;
     cursor: move;
-}
-
-
-#currentSection {
-    padding: 12px 24px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    border-bottom: 1px solid var(--line);
-}
-
-#currentSection input {
-    font-size: small;
-    padding: 12px;
-}
-
-#currentSection input {
-    width: auto;
 }
 
 .action-text {
@@ -228,11 +177,6 @@
 
 .full-width {
     width: 100%;
-}
-
-.white-bg {
-    background-color: white;
-    border-radius: var(--radius);
 }
 
 .new-question {

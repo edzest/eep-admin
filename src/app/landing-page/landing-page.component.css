@@ -1,21 +1,3 @@
-.toolbar {
-    position: sticky;
-    top: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: white;
-    padding: 24px 0;
-}
-
-.logo> h1 {
-    font-weight: bold;
-    display: inline-block;
-    margin-bottom: 0;
-    font-size: 36px;
-    color: var(--dark);
-}
-
 .container {
     max-width: 1200px;
     margin: 0 auto;
