@@ -28,6 +28,7 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { CreateTestOpenDialogComponent } from './create-test/create-test-open-dialog/create-test-open-dialog.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { FileDragNDropDirective } from './directives/file-drag-ndrop.directive';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     QuestionDisplayComponent,
     LandingPageComponent,
     CreateTestOpenDialogComponent,
-    NavbarComponent
+    NavbarComponent,
+    FileDragNDropDirective
   ],
   imports: [
     BrowserModule,

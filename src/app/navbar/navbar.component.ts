@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -9,9 +10,13 @@ export class NavbarComponent implements OnInit {
 
   @Input() loggedIn: boolean = true;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  onLogoClick() {
+    this.router.navigate(['/home']);
   }
 
 }

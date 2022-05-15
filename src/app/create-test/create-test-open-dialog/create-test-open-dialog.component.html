@@ -1,21 +1,45 @@
-<h2 mat-dialog-title class="title">Upload Question File</h2>
-<mat-dialog-content class="mat-typography">
-  <p>Upload the excel sheet by dragging the file in the box below or click on the upload button to populate the questions. 
-      
-
-      <div class="upload-area">
-        <mat-icon class="upload-icon">insert_drive_file</mat-icon>
-        <p>Drag your question sheet here to start uploading</p>
-        <p>OR</p>
-        <div class="upload">
-          <input id="test-file-upload" type="file" class="upload" (change)="onFileUpload($event)">
-          <label for="test-file-upload">
-            <button mat-flat-button color="primary" type="button">Browse Files</button>
-          </label>
+<div class="dialog">
+  <h2 mat-dialog-title class="title">Create A New Test</h2>
+  <mat-dialog-content class="mat-typography">
+    <div class="new-test-form">
+      <form>
+        <div class="form-field">
+          <label for="testName">Name</label>
+          <input type="text" id="testName" name="testName" [(ngModel)]="testName">
         </div>
         
-      </div>
-</mat-dialog-content>
-<mat-dialog-actions align="end">
-  <!-- <button mat-button mat-dialog-close>Skip</button> -->
-</mat-dialog-actions>
+        <div class="form-field">
+          <label for="file-upload">File Upload</label>
+          <p>Upload a file to prefill the questions of this test. Download a sample format of the file <a href="#">here</a>.</p>
+          <div class="upload-area" appFileDragNDrop (filesChangeEmitter)="onFileDrop($event)">
+            <mat-icon class="upload-icon">insert_drive_file</mat-icon>
+            <div>
+              <p *ngIf="!file">Drag your question sheet here to start uploading</p>
+              <p *ngIf="file">{{file.name}}</p>
+              <p *ngIf="!file">OR</p>
+              <div class="upload">
+                <input id="test-file-upload" 
+                       type="file" 
+                       class="upload" 
+                       accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                       (change)="onFileSelect($event)">
+                <label for="test-file-upload">
+                  <div *ngIf="!file">
+                    <button mat-button color="primary" type="button">Browse Files</button>
+                  </div>
+                  <div *ngIf="file">
+                    <button mat-button type="button">Replace file</button>
+                  </div>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-flat-button color="primary" (click)="onCreateClick()">Create</button>
+  </mat-dialog-actions>
+</div>
